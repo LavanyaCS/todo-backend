@@ -7,6 +7,22 @@ app.use(cors());
 require("dotenv").config();
 const port = process.env.PORT || 8080;
 const dbConnection = require("./config/dbConnection");
+//API HEATH CHECKUP
+app.get('/', (req, res) => {
+  res.send('Backend is running ✅');
+});
+
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
+app.get('/', (req, res) => {
+  res.send('Backend is running ✅');
+});
+
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
+
 //Routes
 const authRoute = require("./routes/authRoute");
 app.use("/api/auth",authRoute);
