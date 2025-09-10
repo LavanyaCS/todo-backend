@@ -61,12 +61,12 @@ exports.createTask = async(req,res) => {
 //update Task
 exports.updateTask = async(req,res) => {
     try{
-        const updatetasks = await Task.findOneAndUpdate({_id:req.params.id,user:req.user._id},req.body,{new:true});
-        if(!updatetasks){return res.status(404).json({message:"No Task found"});
+        const updatetask = await Task.findOneAndUpdate({_id:req.params.id,user:req.user._id},req.body,{new:true});
+        if(!updatetask){return res.status(404).json({message:"No Task found"});
         }
         res.status(200).json({
             message:"Task Updated Successfully",
-            tasks:updatetasks
+            task:updatetask
         })
 
     }
