@@ -26,8 +26,9 @@ exports.readTasks = async(req,res) => {
     try{
         const tasks = await Task.find({user:req.user._id})
         if(!tasks || tasks.length === 0){
-            return res.status(404).json({
-                message:"No Task is created under this user"
+            return res.status(200).json({
+                message:"No Task is created under this user",
+                tasks:[]
             });
         }
         res.status(200).json({
