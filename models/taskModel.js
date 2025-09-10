@@ -7,6 +7,6 @@ const taskSchema = new mongoose.Schema({
     priority: { type: String, enum: ["Low", "Medium", "High"], default: "Medium" },
     dueDate: { type: Date, default: () => Date.now() + 7*24*60*60*1000 },
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }
-},{timestamps:true});
+},{timestamps:true}); 
 
 module.exports = mongoose.model("Task", taskSchema);

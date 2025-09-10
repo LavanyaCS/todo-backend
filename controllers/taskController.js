@@ -1,5 +1,26 @@
 const Task = require("../models/taskModel");
 
+//Read all User Task
+exports.readallTasks = async(req,res) => {
+    try{
+        const tasks = await Task.find({})
+        if(!tasks || tasks.length === 0){
+            return res.status(200).json({
+                message:"No Task is created",
+                tasks:[]
+            });
+        }
+        res.status(200).json({
+            message:"All task fetched successfully",
+            tasks
+        })
+
+    }
+    catch(err){
+        res.status(500).json({message:`Internal Server Error ${err.message}`})
+    }
+}
+
 //Read Task
 exports.readTasks = async(req,res) => {
     try{
